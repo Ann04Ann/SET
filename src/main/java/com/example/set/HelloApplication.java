@@ -4,7 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import java.io.IOException;
 
 public class HelloApplication extends Application {
@@ -15,7 +18,10 @@ public class HelloApplication extends Application {
         stage.setTitle("SET!");
         stage.setScene(scene);
         stage.show();
+
+
     }
+
 
     public static void main(String[] args) {
         launch();
