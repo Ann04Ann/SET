@@ -1,19 +1,23 @@
 package com.example.set;
 
+import javafx.scene.image.Image;
+
 public class Card {
 
-    String name;
-    String color;
-    String quantity;
-    String texture;
     String symbol;
+    String color;
+    String texture;
+    int quantity;
+    Image image;
 
-    public Card(String name, String color, String quantity, String texture, String symbol) {
-        this.name = name;
+    public Card(String symbol, String color, String texture, int quantity, Image image) {
+
         this.color = color;
         this.quantity = quantity;
         this.texture = texture;
         this.symbol = symbol;
+        this.image = image;
+
 
     }
 
@@ -29,8 +33,8 @@ public class Card {
     public boolean property_quantity(Card A, Card B)
     {
         boolean ans;
-        ans = (this.quantity.equals(A.quantity) & A.quantity.equals(B.quantity)) |
-                (!this.quantity.equals(A.quantity) & !A.quantity.equals(B.quantity) & !this.quantity.equals(B.quantity));
+        ans = (this.quantity == A.quantity & A.quantity == B.quantity) |
+                (this.quantity !=A.quantity & A.quantity != B.quantity & this.quantity !=B.quantity);
         return ans;
     }
 
@@ -50,10 +54,16 @@ public class Card {
         return ans;
     }
 
+    public boolean property_all(Card A, Card B)
+    {
+        boolean ans;
+        ans = !(this.equals(A)) &!(this.equals(B))&!(B.equals(A));
+        return ans;
+    }
 
     public boolean property(Card A, Card B){
         boolean ans;
-        ans = this.property_color(A, B) & this.property_quantity(A, B) & this.property_texture(A, B) & this.property_symbol(A, B);
+        ans = this.property_color(A, B) & this.property_quantity(A, B) & this.property_texture(A, B) & this.property_symbol(A, B) & this.property_all(A,B);
         return ans;
     }
 
