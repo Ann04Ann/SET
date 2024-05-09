@@ -3,6 +3,8 @@ package com.example.set;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.Collections;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,8 +13,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import java.util.Arrays;
+import java.util.List;
 
-//import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Util.println;
 
 public class HelloController {
 
@@ -45,13 +48,15 @@ public class HelloController {
     }
 
     Initialization_card I = new Initialization_card();
-    Card[] all_card = I.card();
+    List<Card> all_card_list = I.card();
+    Card[] all_card;
 
 
     Card[][] gameField = new Card[4][3];
 
 
     int isGame = 0;
+    int numer = 0;
     int controller_player = 0;
     Card[] game_card = new Card[3];
     Button[] btns = new Button[3];
@@ -59,17 +64,11 @@ public class HelloController {
 
 
 
-    void heppy (){
-        // Создаем изображение для кнопки
-         Image image = new Image("смайлик.jpg");
+    /* public void showTimer(int maxTime){
+        int minutes;
+        int seconds = (SECOND_IN_MINUTS-1)-clockCount%SECOND_IN_MINUTS;
 
-        // Создаем представление изображения
-        ImageView imageView = new ImageView(image);
-
-
-
-
-    }
+    }*/
 
 
 
@@ -77,7 +76,6 @@ public class HelloController {
     void btnClick(ActionEvent event) {
         isGame++;
         Button btn = (Button) event.getSource();
-        //ImageView iv = (ImageView) event.getSource();
         btn.setText(btn.getText() + ":)");
 
 
@@ -99,55 +97,56 @@ public class HelloController {
                 mainLabl2.setText(String.valueOf(controller_player));
 
                 for (int i = 0; i < 3; i++) {
-                    int rnd = (int) (Math.random() * 17);
 
-                    //btns[i].setText(all_card[rnd].name);
-
-
-                    ivs[i].setImage(all_card[rnd].image);
+                    ivs[i].setImage(all_card[numer%81].image);
                     btns[i].setGraphic(ivs[i]);
                     btns[i].setText("");
 
-
-                   // Objects.equals(a,b)
                     int rowIndex1 = GridPane.getRowIndex(btns[i]) == null ? 0 : GridPane.getRowIndex(btns[i]);
                     int columnIndex1 = GridPane.getColumnIndex(btns[i]) == null ? 0 : GridPane.getColumnIndex(btns[i]);
-                    gameField[rowIndex1][columnIndex1] = all_card[rnd];
+                    gameField[rowIndex1][columnIndex1] = all_card[numer%81];
+                    numer++;
                 }
 
             }
+            else{
+                btns[0].setText("");
+                btns[1].setText("");
+                btns[2].setText("");
+            }
+
             isGame = 0;
         }
         //if (controller_player==5){heppy();}
 
     }
-    //public Image image = new Image("imaeg.png");
+
 
     @FXML
     void btnClick1(ActionEvent event) throws FileNotFoundException {
 
-
-
-        int rnd = (int) (Math.random() * 17);
+        Collections.shuffle(all_card_list);
+        all_card = (Card[]) all_card_list.stream().toArray(Card[]::new);
+//all_card_list.get(0)
         for (int i = 0; i < 12; i++) {
 
 
             // all_btn[i].setText(all_card[rnd].name);
            // all_btn[i].setStyle(all_card[rnd].color);
 
-
-            //Image image = new Image(new FileInputStream("C:\\Users\\annas\\SET_SET\\SET\\src\\main\\resources\\images\\riLxM6di8.png"));
-            all_iv[i].setImage(all_card[rnd].image);
+            all_iv[i].setImage(all_card[i].image);
             all_btn[i].setGraphic(all_iv[i]);
             all_btn[i].setText("");
 
 
-            gameField[i / 3][i % 3] = all_card[rnd];
-            rnd = (rnd + 1) % all_card.length;
+            gameField[i / 3][i % 3] = all_card[i];
+
         }
         isGame = 0;
         controller_player = 0;
+        numer  =12;
         mainLabl2.setText(String.valueOf(controller_player));
+
 
 
 

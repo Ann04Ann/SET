@@ -3,6 +3,8 @@ package com.example.set;
 import javafx.scene.image.Image;
 
 import java.io.FileNotFoundException;
+import java.util.Arrays;
+import java.util.List;
 
 //это надо сделать файлом, но я не знаю как
 public class Initialization_card {
@@ -13,7 +15,7 @@ public class Initialization_card {
     /*           овал-2      зеленый-2        штриховка-2                 */
     /*           кривая-3    фиолетовый-3     сплошная-3                  */
 
-    Card[] card() throws FileNotFoundException {
+    List<Card> card() throws FileNotFoundException {
         Initialization_png I = new Initialization_png();
         Image[] all = I.imeag();
 
@@ -111,9 +113,7 @@ public class Initialization_card {
         Card card_3333 = new Card("curve","violet","full",    3, all[80]);
 
 
-
-
-        return new Card[] {card_1111, card_1112, card_1113,card_1121, card_1122, card_1123,card_1131, card_1132, card_1133,
+        List<Card> all_card = Arrays.asList(card_1111, card_1112, card_1113,card_1121, card_1122, card_1123,card_1131, card_1132, card_1133,
                 card_1211, card_1212, card_1213,card_1221, card_1222, card_1223,card_1231, card_1232, card_1233,
                 card_1311, card_1312, card_1313,card_1321, card_1322, card_1323,card_1331, card_1332, card_1333,
 
@@ -123,7 +123,8 @@ public class Initialization_card {
 
                 card_3111, card_3112, card_3113,card_3121, card_3122, card_3123,card_3131, card_3132, card_3133,
                 card_3211, card_3212, card_3213,card_3221, card_3222, card_3223,card_3231, card_3232, card_3233,
-                card_3311, card_3312, card_3313,card_3321, card_3322, card_3323,card_3331, card_3332, card_3333};
+                card_3311, card_3312, card_3313,card_3321, card_3322, card_3323,card_3331, card_3332, card_3333);
+        return all_card;
     };
 
 }
