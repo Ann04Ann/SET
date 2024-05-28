@@ -22,49 +22,43 @@ public class Card {
     }
 
 
-    public boolean property_color(Card A, Card B)
+    private boolean property_color(Card A, Card B)
     {
-        boolean ans;
-        ans = (this.color.equals(A.color) & A.color.equals(B.color)) |
+
+        return (this.color.equals(A.color) & A.color.equals(B.color)) |
                 (!this.color.equals(A.color) & !A.color.equals(B.color) & !this.color.equals(B.color));
-        return ans;
     }
 
-    public boolean property_quantity(Card A, Card B)
+    private boolean property_quantity(Card A, Card B)
     {
-        boolean ans;
-        ans = (this.quantity == A.quantity & A.quantity == B.quantity) |
+
+        return (this.quantity == A.quantity & A.quantity == B.quantity) |
                 (this.quantity !=A.quantity & A.quantity != B.quantity & this.quantity !=B.quantity);
-        return ans;
     }
 
-    public boolean property_texture(Card A, Card B)
+    private boolean property_texture(Card A, Card B)
     {
-        boolean ans;
-        ans = (this.texture.equals(A.texture) & A.texture.equals(B.texture)) |
+
+        return (this.texture.equals(A.texture) & A.texture.equals(B.texture)) |
                 (!this.texture.equals(A.texture) & !A.texture.equals(B.texture) & !this.texture.equals(B.texture));
-        return ans;
+
     }
 
-    public boolean property_symbol(Card A, Card B)
+    private boolean property_symbol(Card A, Card B)
     {
-        boolean ans;
-        ans = (this.symbol.equals(A.symbol) & A.symbol.equals(B.symbol)) |
+
+        return (this.symbol.equals(A.symbol) & A.symbol.equals(B.symbol)) |
                 (!this.symbol.equals(A.symbol) & !A.symbol.equals(B.symbol) & !this.symbol.equals(B.symbol));
-        return ans;
     }
 
-    public boolean property_all(Card A, Card B)
+    private boolean property_all(Card A, Card B)
     {
-        boolean ans;
-        ans = !(this.equals(A)) &!(this.equals(B))&!(B.equals(A));
-        return ans;
+
+        return !(this.equals(A)) &!(this.equals(B))&!(B.equals(A));
     }
 
     public boolean property(Card A, Card B){
-        boolean ans;
-        ans = this.property_color(A, B) & this.property_quantity(A, B) & this.property_texture(A, B) & this.property_symbol(A, B) & this.property_all(A,B);
-        return ans;
+        return this.property_color(A, B) & this.property_quantity(A, B) & this.property_texture(A, B) & this.property_symbol(A, B) & this.property_all(A,B);
     }
 
 

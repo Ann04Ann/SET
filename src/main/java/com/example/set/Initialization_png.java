@@ -103,6 +103,8 @@ public class Initialization_png {
         Image image3332 = new Image(new FileInputStream("C:\\Users\\annas\\SET_SET\\SET\\src\\main\\resources\\images\\png_3332.png"));
         Image image3333 = new Image(new FileInputStream("C:\\Users\\annas\\SET_SET\\SET\\src\\main\\resources\\images\\png_3333.png"));
 
+        //Image happy = new Image(new FileInputStream("C:\\Users\\annas\\SET_SET\\SET\\src\\main\\resources\\images\\смайлик.png"));
+
 
         return new Image[]{
                 image1111, image1112, image1113, image1121, image1122, image1123, image1131, image1132, image1133,
@@ -115,7 +117,8 @@ public class Initialization_png {
 
                 image3111, image3112, image3113, image3121, image3122, image3123, image3131, image3132, image3133,
                 image3211, image3212, image3213, image3221, image3222, image3223, image3231, image3232, image3233,
-                image3311, image3312, image3313, image3321, image3322, image3323, image3331, image3332, image3333
+                image3311, image3312, image3313, image3321, image3322, image3323, image3331, image3332, image3333,
+                //happy
         };
     }
 }

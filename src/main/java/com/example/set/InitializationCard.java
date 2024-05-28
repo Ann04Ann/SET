@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 //это надо сделать файлом, но я не знаю как
-public class Initialization_card {
+public class InitializationCard {
 
 
     /*кодировка: тип    +    цвет      +      заливка        + количество */
@@ -111,6 +111,8 @@ public class Initialization_card {
         Card card_3331 = new Card("curve","violet","full",    1, all[78]);
         Card card_3332 = new Card("curve","violet","full",    2, all[79]);
         Card card_3333 = new Card("curve","violet","full",    3, all[80]);
+
+       // Card card_happy = new Card("curve","violet","full",    3, all[81]);
 
 
         List<Card> all_card = Arrays.asList(card_1111, card_1112, card_1113,card_1121, card_1122, card_1123,card_1131, card_1132, card_1133,
